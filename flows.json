@@ -16,6 +16,38 @@
         "env": []
     },
     {
+        "id": "c96ec54361ae853f",
+        "type": "tab",
+        "label": "mongodb flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f95be727f36e4ad9",
+        "type": "mongodb4-client",
+        "name": "localhost",
+        "protocol": "mongodb",
+        "hostname": "mongo-1",
+        "port": "27017",
+        "dbName": "nodered",
+        "appName": "nodered-1",
+        "authSource": "nodered",
+        "authMechanism": "SCRAM-SHA-256",
+        "tls": false,
+        "tlsCAFile": "",
+        "tlsCertificateKeyFile": "",
+        "tlsInsecure": false,
+        "connectTimeoutMS": "30000",
+        "socketTimeoutMS": "0",
+        "minPoolSize": "0",
+        "maxPoolSize": "100",
+        "maxIdleTimeMS": "0",
+        "uri": "",
+        "advanced": "{}",
+        "uriTabActive": "tab-uri-simple"
+    },
+    {
         "id": "b9acadc783af427d",
         "type": "inject",
         "z": "b53150cb5a4e0a69",
@@ -103,6 +135,91 @@
         "statusType": "auto",
         "x": 360,
         "y": 80,
+        "wires": []
+    },
+    {
+        "id": "713381154ac98b78",
+        "type": "inject",
+        "z": "c96ec54361ae853f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "a94d1cc95def40cd"
+            ]
+        ]
+    },
+    {
+        "id": "b0053efe8da259b5",
+        "type": "mongodb4",
+        "z": "c96ec54361ae853f",
+        "clientNode": "f95be727f36e4ad9",
+        "mode": "collection",
+        "collection": "persons",
+        "operation": "find",
+        "output": "toArray",
+        "maxTimeMS": "0",
+        "handleDocId": false,
+        "name": "",
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "dace2cd21370f41a"
+            ]
+        ]
+    },
+    {
+        "id": "a94d1cc95def40cd",
+        "type": "function",
+        "z": "c96ec54361ae853f",
+        "name": "set query",
+        "func": "msg.payload = [{}];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "b0053efe8da259b5"
+            ]
+        ]
+    },
+    {
+        "id": "dace2cd21370f41a",
+        "type": "debug",
+        "z": "c96ec54361ae853f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 140,
         "wires": []
     }
 ]
