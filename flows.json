@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "410c2b05c21dd259",
+        "type": "tab",
+        "label": "a second flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "b9acadc783af427d",
         "type": "inject",
         "z": "b53150cb5a4e0a69",
@@ -50,6 +58,51 @@
         "statusType": "auto",
         "x": 420,
         "y": 200,
+        "wires": []
+    },
+    {
+        "id": "743e691e9a493d06",
+        "type": "inject",
+        "z": "410c2b05c21dd259",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "692238f22555306d"
+            ]
+        ]
+    },
+    {
+        "id": "692238f22555306d",
+        "type": "debug",
+        "z": "410c2b05c21dd259",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 80,
         "wires": []
     }
 ]
